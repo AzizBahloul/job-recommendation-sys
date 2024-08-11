@@ -1,0 +1,6 @@
+[
+    {"id": 1, "title": "Python Developer", "skills": ["python", "django", "flask"]},
+    {"id": 2, "title": "Data Scientist", "skills": ["python", "machine learning", "statistics"]},
+    {"id": 3, "title": "Frontend Developer", "skills": ["javascript", "react", "css"]},
+    {"id": 4, "title": "DevOps Engineer", "skills": ["docker", "kubernetes", "jenkins"]}
+]
