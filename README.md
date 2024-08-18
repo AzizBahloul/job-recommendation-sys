@@ -1,158 +1,101 @@
-Here's how you can convert the README.md content into a Jupyter Notebook format. In a Jupyter Notebook, you'll use Markdown cells for the textual content and code cells for code snippets. Here's an example of how to structure it:
+Here's a README file that you can use for your GitHub repository:
 
-```markdown
-# Job Recommendation Microservice
+---
 
-This microservice provides job recommendations based on user skills using a content-based recommendation system. It's built with FastAPI and uses TF-IDF and cosine similarity for generating recommendations.
+# Job Recommendation System
 
-## Features
+This project provides a job recommendation system using FastAPI, SQLAlchemy, and a content-based recommendation model. The system allows users to get job recommendations based on their interactions and update job metadata.
 
-- Get job recommendations based on user skills
-- Update the recommendation model with new job data
-- Dockerized for easy deployment
-- Built with FastAPI for high performance
-- Uses scikit-learn for TF-IDF and cosine similarity calculations
+## Technologies Used
 
-## Installation
+- **FastAPI**: A modern web framework for building APIs with Python 3.7+ based on standard Python type hints.
+- **SQLAlchemy**: SQL toolkit and Object-Relational Mapping (ORM) library for Python.
+- **Pandas**: Data manipulation and analysis library.
+- **Scikit-learn**: Machine learning library used for TF-IDF vectorization and computing cosine similarity.
+- **Joblib**: Used for saving and loading model artifacts.
+- **PostgreSQL**: Database used for storing user interactions and job metadata.
 
-### Prerequisites
+## Endpoints
 
-- Python 3.9+
-- Docker (optional)
+### 1. **Get Recommendations**
 
-### Local Setup
+**Endpoint:** `GET /api/recommendations/{user_id}`  
+**Description:** Retrieves job recommendations for a specific user. Recommendations are based on the user's recent interactions with jobs.
 
-1. **Clone the repository:**
+**Parameters:**
+- `user_id` (path parameter): The ID of the user for whom to get recommendations.
 
-```bash
-git clone https://github.com/yourusername/job-recommendation-service.git
-cd job-recommendation-service
+**Response:**
+- Returns a list of recommended jobs with their IDs and scores.
+
+### 2. **Log Interaction**
+
+**Endpoint:** `POST /api/recommendations/interactions`  
+**Description:** Logs a new interaction between a user and a job.
+
+**Request Body:**
+```json
+{
+  "user_id": 1,
+  "job_id": 123,
+  "interaction_type": "click",
+  "interaction_value": 5.0
+}
 ```
 
-2. **Create a virtual environment:**
+**Response:**
+- Returns a message indicating that the interaction was logged successfully.
 
-```bash
-python -m venv venv
+### 3. **Update Job Metadata**
+
+**Endpoint:** `POST /api/recommendations/job-metadata`  
+**Description:** Updates or creates metadata for a job, including its title, description, and skills.
+
+**Request Body:**
+```json
+{
+  "job_id": 123,
+  "title": "Software Engineer",
+  "description": "Develop and maintain software applications.",
+  "skills": ["Python", "Django", "SQL"]
+}
 ```
 
-3. **Activate the virtual environment:**
+**Response:**
+- Returns a message indicating that the job metadata was updated successfully.
 
-   - On Windows:
+## How to Run
+
+1. **Install Dependencies:**  
+   Ensure you have Python 3.7+ installed and then install the required packages using:
    ```bash
-   venv\Scripts\activate
+   pip install -r requirements.txt
    ```
 
-   - On Unix or MacOS:
+2. **Set Up Database:**  
+   Make sure PostgreSQL is running and configured with the credentials provided in `app/database.py`.
+
+3. **Run the Application:**  
+   Start the FastAPI application using:
    ```bash
-   source venv/bin/activate
+   uvicorn app.main:app --host 0.0.0.0 --port 8000
    ```
 
-4. **Install the required packages:**
+4. **Access the API:**  
+   The API will be available at `http://localhost:8000`. You can use tools like [Swagger UI](http://localhost:8000/docs) or [Postman](https://www.postman.com/) to interact with the endpoints.
 
-```bash
-pip install -r requirements.txt
-```
+## Data Preparation
 
-5. **Run the service:**
+1. **Preprocess Data:**  
+   Run `scripts/preprocess.ipynb` to preprocess the job postings data and save the necessary files.
 
-```bash
-python run.py
-```
-
-The service will be available at `http://localhost:8000`.
-
-### Docker Setup
-
-1. **Build the Docker image:**
-
-```bash
-docker build -t job-recommendation-service .
-```
-
-2. **Run the Docker container:**
-
-```bash
-docker run -p 8000:8000 job-recommendation-service
-```
-
-The service will be available at `http://localhost:8000`.
-
-## Usage
-
-### API Endpoints
-
-1. **Get Job Recommendations:**
-
-   - **URL:** `/recommendations`
-   - **Method:** POST
-   - **Request Body:**
-
-   ```json
-   {
-     "skills": ["python", "machine learning", "data analysis"]
-   }
-   ```
-
-   - **Response:**
-
-   ```json
-   [
-     {
-       "job_id": 2,
-       "title": "Data Scientist",
-       "score": 0.8754
-     },
-     ...
-   ]
-   ```
-
-2. **Update Model:**
-
-   - **URL:** `/update_model`
-   - **Method:** POST
-   - **Request Body:**
-
-   ```json
-   [
-     {
-       "id": 5,
-       "title": "ML Engineer",
-       "skills": ["python", "tensorflow", "deep learning"]
-     },
-     ...
-   ]
-   ```
-
-   - **Response:**
-
-   ```json
-   {
-     "message": "Model updated successfully"
-   }
-   ```
-
-## Testing
-
-Run the tests using pytest:
-
-```bash
-pytest tests/
-```
+2. **Train Model:**  
+   Execute `scripts/train_model.py` to compute and save the cosine similarity matrix used for recommendations.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Feel free to contribute to the project by opening issues or submitting pull requests. For any questions or issues, please contact [Your Name].
 
-## License
+---
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-To use this content in a Jupyter Notebook:
-
-1. **Open a new or existing Jupyter Notebook.**
-2. **Create a new Markdown cell** for each section of the README.
-3. **Copy and paste the respective sections** from the Markdown content above into these Markdown cells.
-4. **Create Code cells** for the code snippets.
-
-This will give you a well-structured notebook that mirrors the content and structure of the README.md file.
+You can adjust the details according to your specific setup and preferences.
