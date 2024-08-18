@@ -1,3 +1,6 @@
+Sure, here's a full README file for your job recommendation system:
+
+---
 
 # Job Recommendation System
 
@@ -89,10 +92,14 @@ This project provides a job recommendation system using FastAPI, SQLAlchemy, and
 2. **Train Model:**  
    Execute `scripts/train_model.py` to compute and save the cosine similarity matrix used for recommendations.
 
+## Note on CSV Files
+
+I've kept the CSV files for myself due to their high storage requirements. The system can run without these files, as we have the necessary model and processed data files. If you need to work with the CSVs in the future, let me know.
+
 ## Contributing
 
 Feel free to contribute to the project by opening issues or submitting pull requests. For any questions or issues, please contact [Your Name].
 
 ---
 
-You can adjust the details according to your specific setup and preferences.
+You can adjust the details as needed for your specific setup and preferences.
