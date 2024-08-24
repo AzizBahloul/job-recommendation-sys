@@ -1,6 +1,3 @@
-Sure, here's a full README file for your job recommendation system:
-
----
 
 # Job Recommendation System
 
