@@ -1,4 +1,5 @@
 
+
 # Job Recommendation System
 
 This project provides a job recommendation system using FastAPI, SQLAlchemy, and a content-based recommendation model. The system allows users to get job recommendations based on their interactions and update job metadata.
@@ -93,10 +94,7 @@ This project provides a job recommendation system using FastAPI, SQLAlchemy, and
 
 I've kept the CSV files for myself due to their high storage requirements. The system can run without these files, as we have the necessary model and processed data files. If you need to work with the CSVs in the future, let me know.
 
-## Contributing
 
-Feel free to contribute to the project by opening issues or submitting pull requests. For any questions or issues, please contact [Your Name].
 
----
+ For any questions or issues, please contact khalil zahmoul
 
-You can adjust the details as needed for your specific setup and preferences.
